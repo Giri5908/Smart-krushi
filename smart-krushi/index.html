@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#14452f" />
+  <title>Smart Krushi | Smart Farming Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <!-- Top Navigation Bar (Desktop & Tablet) -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-left">
+          <button class="mobile-menu" id="menuButton" aria-label="Open navigation">☰</button>
+          <a class="brand" href="#overview" aria-label="Smart Krushi home">
+            <span class="brand-mark">✳</span>
+            <span>
+              <strong>Smart Krushi</strong>
+              <small>FARM SMARTER</small>
+            </span>
+          </a>
+        </div>
+
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a class="nav-link active" href="#overview"><span data-i18n="overview">Overview</span></a>
+          <a class="nav-link" href="#weather"><span data-i18n="weather">Weather</span></a>
+          <a class="nav-link" href="#crops"><span data-i18n="crop">Crop advisor</span></a>
+          <a class="nav-link" href="#soil"><span data-i18n="soil">Soil health</span></a>
+          <a class="nav-link" href="#profit"><span data-i18n="profit">Profit calculator</span></a>
+          <a class="nav-link" href="#season-planner"><span data-i18n="aiPlannerNav">AI Season Planner</span></a>
+          <a class="nav-link" href="#pests"><span data-i18n="pests">Pest guide</span></a>
+          <a class="nav-link" href="#schemes"><span data-i18n="schemes">Govt. schemes</span></a>
+        </nav>
+
+        <div class="top-actions">
+          <div class="date-chip"><span>◷</span><span id="todayDate"></span></div>
+          <label class="language-picker">
+            <span>文</span>
+            <select id="languageSelect" aria-label="Select language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు</option>
+              <option value="hi">हिन्दी</option>
+            </select>
+          </label>
+          <button class="account-pill" id="accountTop" aria-label="Account">
+            <span class="avatar" id="avatar">F</span>
+            <span class="account-pill-text">
+              <strong id="accountName">Farmer account</strong>
+              <small id="accountStatus">Sign in to save your profile</small>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slide-out Navigation Drawer (Mobile) -->
+    <aside class="sidebar" id="sidebar" aria-label="Mobile navigation">
+      <div class="sidebar-header">
+        <a class="brand" href="#overview">
+          <span class="brand-mark">✳</span>
+          <span><strong>Smart Krushi</strong><small>FARM SMARTER</small></span>
+        </a>
+        <button class="sidebar-close" id="closeSidebar" aria-label="Close navigation">×</button>
+      </div>
+      <div class="side-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="nav-list">
+        <a class="nav-link active" href="#overview"><span>▦</span><span data-i18n="overview">Overview</span></a>
+        <a class="nav-link" href="#weather"><span>☀</span><span data-i18n="weather">Weather</span></a>
+        <a class="nav-link" href="#crops"><span>♧</span><span data-i18n="crop">Crop advisor</span></a>
+        <a class="nav-link" href="#soil"><span>◉</span><span data-i18n="soil">Soil health</span></a>
+        <a class="nav-link" href="#season-planner"><span>✦</span><span data-i18n="aiPlannerNav">AI Season Planner</span></a>
+        <a class="nav-link" href="#profit"><span>₹</span><span data-i18n="profit">Profit calculator</span></a>
+        <a class="nav-link" href="#pests"><span>⌁</span><span data-i18n="pests">Pest guide</span></a>
+        <a class="nav-link" href="#schemes"><span>♙</span><span data-i18n="schemes">Govt. schemes</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <span class="help-icon">🌱</span>
+          <strong data-i18n="grow">Grow with confidence</strong>
+          <p data-i18n="growText">Small steps today can build a healthier harvest tomorrow.</p>
+        </div>
+        <button class="profile-button" id="accountButton">
+          <span class="avatar-badge">♙</span>
+          <span class="profile-copy">
+            <strong data-i18n="farmerAccount">FARMER ACCOUNT</strong>
+            <small data-i18n="login">Login</small>
+          </span>
+          <span>›</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Showcase Hero Template -->
+      <section class="hero-showcase" id="overview">
+        <div class="hero-copy">
+          <div class="hero-badges">
+            <span class="hero-tag" data-i18n="farmWorkspace">YOUR FARM WORKSPACE</span>
+            <span class="hero-pill" data-i18n="seasonReady">A BETTER WAY TO FARM</span>
+          </div>
+          <h1>
+            <span data-i18n="goodDay">Good day, farmer</span> <span class="wave">✦</span>
+          </h1>
+          <h2 class="hero-headline" data-i18n="heroTitle">Plan well. Grow more.<br>Harvest with confidence.</h2>
+          <p class="hero-desc" data-i18n="heroText">Bring weather, crop planning and farm calculations together in one place.</p>
+          <p class="hero-subdesc" data-i18n="welcomeText">Make informed decisions with simple tools for your farm.</p>
+
+          <div class="hero-actions">
+            <a class="hero-cta" href="#crops">
+              <span data-i18n="exploreTools">Explore farm tools</span> <b>↗</b>
+            </a>
+            <a class="hero-secondary-cta" href="#weather">
+              <span data-i18n="weatherForecast">Weather forecast</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-image-frame">
+            <img src="assets/smart-farming-hero.png" alt="Farmer using smart farming tools in a green field">
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Summary Strip -->
+      <section class="stat-grid" aria-label="Farm highlights">
+        <article class="stat-card">
+          <div class="stat-icon green">☀</div>
+          <div>
+            <span data-i18n="weatherStatus">Weather status</span>
+            <strong id="weatherSummary">--</strong>
+            <small id="weatherLocation">Set a location below</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon gold">♧</div>
+          <div>
+            <span data-i18n="cropPlanning">Crop planning</span>
+            <strong data-i18n="planAhead">Plan ahead</strong>
+            <small data-i18n="cropPlanningSub">Find crops for your conditions</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon blue">◉</div>
+          <div>
+            <span data-i18n="soilCheck">Soil check</span>
+            <strong data-i18n="testYourSoil">Test your soil</strong>
+            <small data-i18n="soilSub">Understand pH and nutrients</small>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon violet">₹</div>
+          <div>
+            <span data-i18n="farmEconomics">Farm economics</span>
+            <strong data-i18n="knowYourNumbers">Know your numbers</strong>
+            <small data-i18n="profitSub">Estimate cost and returns</small>
+          </div>
+        </article>
+      </section>
+
+      <!-- Quick Access Bar -->
+      <section class="tools-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="quickAccess">QUICK ACCESS</p>
+            <h2 data-i18n="farmTools">Your farm tools</h2>
+          </div>
+          <span class="section-note" data-i18n="toolsNote">Practical tools, all in one place</span>
+        </div>
+        <div class="tool-grid">
+          <a class="tool-card" href="#weather">
+            <span class="tool-icon mint">☀</span>
+            <span><strong data-i18n="weatherForecast">Weather forecast</strong><small data-i18n="weatherCardText">Check local conditions</small></span>
+            <b>↗</b>
+          </a>
+          <a class="tool-card" href="#crops">
+            <span class="tool-icon lime">♧</span>
+            <span><strong data-i18n="cropAdvisor">Crop advisor</strong><small data-i18n="cropCardText">Explore suitable crops</small></span>
+            <b>↗</b>
+          </a>
+          <a class="tool-card" href="#soil">
+            <span class="tool-icon sky">◉</span>
+            <span><strong data-i18n="soilCalculator">Soil health check</strong><small data-i18n="soilCardText">Review soil readings</small></span>
+            <b>↗</b>
+          </a>
+          <a class="tool-card" href="#profit">
+            <span class="tool-icon peach">₹</span>
+            <span><strong data-i18n="profitEstimator">Profit estimator</strong><small data-i18n="profitCardText">Estimate your farm returns</small></span>
+            <b>↗</b>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 1: Weather & Crop Advisor -->
+      <section class="content-grid">
+        <div class="panel weather-panel" id="weather">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="localConditions">LOCAL CONDITIONS</p>
+              <h2 data-i18n="weatherDashboard">Weather dashboard</h2>
+            </div>
+            <span class="live-label"><i></i><span data-i18n="liveData">LIVE DATA</span></span>
+          </div>
+          <form id="weatherForm" class="inline-form">
+            <label class="sr-only" for="weatherCity">City or village</label>
+            <input id="weatherCity" placeholder="Enter village or city (e.g. Visakhapatnam)" value="Visakhapatnam" required>
+            <button class="primary-button" type="submit" data-i18n="getWeather">Get weather</button>
+          </form>
+          <div class="weather-display">
+            <div>
+              <div class="weather-temp" id="weatherTemp">--°</div>
+              <div class="weather-condition" id="weatherCondition">Search for a location</div>
+              <div class="weather-place" id="weatherPlace">Weather provided by Open-Meteo</div>
+            </div>
+            <div class="weather-symbol" id="weatherSymbol">☀</div>
+          </div>
+          <div class="weather-metrics">
+            <div><span>💧 <span data-i18n="humidity">Humidity</span></span><strong id="humidityValue">--</strong></div>
+            <div><span>💨 <span data-i18n="wind">Wind</span></span><strong id="windValue">--</strong></div>
+            <div><span>🌧 <span data-i18n="rain">Rain</span></span><strong id="rainValue">--</strong></div>
+          </div>
+          <p class="footnote" id="weatherNote" data-i18n="weatherNote">Forecasts are guidance only. Check local advisories before farm operations.</p>
+        </div>
+
+        <div class="panel crop-panel" id="crops">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="planningAssistant">PLANNING ASSISTANT</p>
+              <h2 data-i18n="cropRecommendation">Crop recommendation</h2>
+            </div>
+            <span class="panel-emoji">🌾</span>
+          </div>
+          <p class="muted small" data-i18n="cropIntro">Choose your conditions to see crops that may be worth exploring.</p>
+          <form id="cropForm" class="stack-form">
+            <label>
+              <span data-i18n="soilType">Soil type</span>
+              <select id="cropSoil">
+                <option value="alluvial">Alluvial</option>
+                <option value="black">Black</option>
+                <option value="red">Red</option>
+                <option value="sandy">Sandy</option>
+                <option value="clay">Clay</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="waterAvailability">Water availability</span>
+              <select id="cropWater">
+                <option value="high">Good / assured</option>
+                <option value="medium">Moderate</option>
+                <option value="low">Limited</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="season">Season</span>
+              <select id="cropSeason">
+                <option value="kharif">Kharif (Monsoon)</option>
+                <option value="rabi">Rabi (Winter)</option>
+                <option value="zaid">Zaid (Mar–Jun)</option>
+              </select>
+            </label>
+            <button class="primary-button full" type="submit" data-i18n="findCrops">Find crop ideas</button>
+          </form>
+          <div id="cropResults" class="result-box" aria-live="polite">
+            <span class="result-icon">✦</span>
+            <span data-i18n="cropResultHint">Your crop ideas will appear here.</span>
+          </div>
+          <p class="footnote" data-i18n="cropDisclaimer">Indicative ideas only. Confirm local suitability, seed variety and sowing window with a KVK or agriculture officer.</p>
+        </div>
+      </section>
+
+      <!-- Section 2: Soil Health & Profit Calculator -->
+      <section class="content-grid">
+        <div class="panel" id="soil">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="soilInsights">SOIL INSIGHTS</p>
+              <h2 data-i18n="soilHealthCalculator">Soil health calculator</h2>
+            </div>
+            <span class="panel-emoji">🪴</span>
+          </div>
+          <p class="muted small" data-i18n="soilIntro">Enter values from a soil test report. This gives a simple educational reading.</p>
+          <form id="soilForm" class="form-grid">
+            <label><span>pH (0–14)</span><input type="number" id="soilPh" min="0" max="14" step="0.1" value="6.8" required></label>
+            <label><span>Nitrogen (kg/ha)</span><input type="number" id="soilN" min="0" step="1" value="280" required></label>
+            <label><span>Phosphorus (kg/ha)</span><input type="number" id="soilP" min="0" step="1" value="22" required></label>
+            <label><span>Potassium (kg/ha)</span><input type="number" id="soilK" min="0" step="1" value="180" required></label>
+            <button class="primary-button full span-two" type="submit" data-i18n="analyzeSoil">Analyze soil readings</button>
+          </form>
+          <div id="soilResult" class="result-box" aria-live="polite">
+            <span class="result-icon">◉</span>
+            <span data-i18n="soilHint">Your soil summary will appear here.</span>
+          </div>
+          <p class="footnote" data-i18n="soilDisclaimer">Nutrient categories vary by soil, crop and lab method. Follow the recommendations on your official soil test card.</p>
+        </div>
+
+        <div class="panel" id="profit">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="farmEconomicsLabel">FARM ECONOMICS</p>
+              <h2 data-i18n="profitCalculator">Profit calculator</h2>
+            </div>
+            <span class="panel-emoji">📈</span>
+          </div>
+          <p class="muted small" data-i18n="profitIntro">Estimate a crop's income after your listed expenses.</p>
+          <form id="profitForm" class="stack-form">
+            <label><span data-i18n="landArea">Land area (acres)</span><input id="farmArea" type="number" min="0.01" step="0.01" value="2" required></label>
+            <div class="form-grid compact-grid">
+              <label><span data-i18n="yieldPerAcre">Yield per acre (kg)</span><input id="farmYield" type="number" min="0" step="1" value="2200" required></label>
+              <label><span data-i18n="pricePerKg">Selling price (₹/kg)</span><input id="farmPrice" type="number" min="0" step="0.01" value="25" required></label>
+            </div>
+            <label><span data-i18n="totalCosts">Total costs (₹)</span><input id="farmCosts" type="number" min="0" step="1" value="25000" required></label>
+            <button class="primary-button full" type="submit" data-i18n="calculateProfit">Calculate estimate</button>
+          </form>
+          <div class="profit-result">
+            <div><span data-i18n="estimatedRevenue">Estimated revenue</span><strong id="revenueValue">₹1,10,000</strong></div>
+            <div><span data-i18n="estimatedProfit">Estimated net result</span><strong id="profitValue">₹85,000</strong></div>
+          </div>
+          <p class="footnote" data-i18n="profitDisclaimer">An estimate, not a price guarantee. Excludes costs you have not entered and market fluctuations.</p>
+        </div>
+      </section>
+
+      <!-- Section 3: AI Farming Season Planner & Pest Guide -->
+      <section class="content-grid planner-row">
+        <div class="panel ai-planner-panel" id="season-planner">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="seasonPlanner">AI SEASON PLANNER</p>
+              <h2 data-i18n="aiSeasonPlanner">AI Farming Season Planner</h2>
+            </div>
+            <span class="panel-emoji">🤖</span>
+          </div>
+          <p class="muted small" data-i18n="aiPlannerIntro">AI guide on what to do in farming across the full crop cycle, plus daily advice in Telugu.</p>
+
+          <form id="aiPlannerForm" class="ai-planner-controls">
+            <label>
+              <span data-i18n="season">Season</span>
+              <select id="aiSeason">
+                <option value="kharif">Kharif (Monsoon)</option>
+                <option value="rabi">Rabi (Winter)</option>
+                <option value="zaid">Zaid (Mar–Jun)</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="selectCrop">Crop</span>
+              <select id="aiCrop">
+                <option value="rice">Rice (Paddy)</option>
+                <option value="cotton">Cotton</option>
+                <option value="groundnut">Groundnut</option>
+                <option value="maize">Maize</option>
+                <option value="wheat">Wheat</option>
+                <option value="chickpea">Chickpea</option>
+                <option value="greengram">Green Gram</option>
+                <option value="watermelon">Watermelon</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit" data-i18n="generatePlan">Get AI Plan</button>
+          </form>
+
+          <div class="ai-plan-grid" id="aiPlanGrid" aria-live="polite"></div>
+
+          <div class="telugu-advice-box" id="teluguDailyAdvice">
+            <div class="telugu-advice-head">
+              <strong>🌾 నేటి రోజువారీ వ్యవసాయ సలహా (తెలుగు)</strong>
+              <button type="button" class="subtle-text-btn" id="nextTeluguTip">మరో సలహా ↻</button>
+            </div>
+            <p id="dailyTeluguTip">ఉదయం లేదా సాయంత్రం చల్లని వేళల్లో మాత్రమే నీరు పెట్టండి; మధ్యాహ్నం ఎండలో నీరు పెడితే ఆవిరై వృథా అవుతుంది.</p>
+          </div>
+
+          <p class="footnote" data-i18n="aiPlannerDisclaimer">AI guidance provides general seasonal schedules. Adjust sowing, fertilizer and irrigation with your local KVK or agriculture officer.</p>
+        </div>
+
+        <div class="panel" id="pests">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="plantProtection">PLANT PROTECTION</p>
+              <h2 data-i18n="pestGuide">Pest & symptom guide</h2>
+            </div>
+            <span class="panel-emoji">🐛</span>
+          </div>
+          <p class="muted small" data-i18n="pestIntro">Choose what you notice on the plant to read possible causes and safer next steps.</p>
+          <label class="field-label" for="pestSelect" data-i18n="observedSymptom">Observed symptom</label>
+          <select id="pestSelect" class="wide-select">
+            <option value="holes">Holes or chewed leaf edges</option>
+            <option value="yellow">Yellowing leaves</option>
+            <option value="spots">Brown or black spots</option>
+            <option value="curl">Curled or sticky leaves</option>
+            <option value="wilt">Sudden wilting</option>
+          </select>
+          <button class="primary-button full spaced" id="identifyPest" data-i18n="viewGuidance">View guidance</button>
+          <div class="result-box pest-result" id="pestResult" aria-live="polite">
+            <span class="result-icon">⌁</span>
+            <span data-i18n="pestHint">Guidance will appear here.</span>
+          </div>
+          <p class="footnote" data-i18n="pestDisclaimer">Symptoms can have several causes. Confirm with a local agricultural expert before applying any treatment or pesticide.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: Featured Government Schemes Band -->
+      <section class="panel schemes-panel" id="schemes">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="supportForFarmers">SUPPORT FOR FARMERS</p>
+            <h2 data-i18n="governmentSchemes">Government schemes & resources</h2>
+          </div>
+          <span class="panel-emoji">🏛</span>
+        </div>
+        <div class="scheme-grid">
+          <article class="scheme-card">
+            <span class="scheme-symbol">₹</span>
+            <div>
+              <strong>PM-KISAN</strong>
+              <p data-i18n="schemeKisan">Official information and beneficiary services for eligible farmer families.</p>
+              <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">☂</span>
+            <div>
+              <strong>PM Fasal Bima Yojana</strong>
+              <p data-i18n="schemeInsurance">Crop insurance information, notifications and farmer services.</p>
+              <a href="https://pmfby.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">◉</span>
+            <div>
+              <strong>Soil Health Card</strong>
+              <p data-i18n="schemeSoil">Learn about soil testing and soil health card services.</p>
+              <a href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+        </div>
+        <p class="footnote" data-i18n="schemeDisclaimer">Eligibility, benefits and application windows can change. Verify details on the official portal or with your agriculture department.</p>
+      </section>
+
+      <footer class="footer">
+        <a class="brand footer-brand" href="#overview">
+          <span class="brand-mark">✳</span>
+          <span><strong>Smart Krushi</strong><small>FARM SMARTER</small></span>
+        </a>
+        <span data-i18n="footerText">Built to make farm information easier to explore.</span>
+        <a class="back-top-btn" href="#overview" data-i18n="backTop">Back to top ↑</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal-backdrop" id="authModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-brand">✳</div>
+      <p class="eyebrow" data-i18n="farmerAccount">FARMER ACCOUNT</p>
+      <h2 id="authTitle" data-i18n="welcomeBack">Welcome back</h2>
+      <p class="muted small" data-i18n="authIntro">Create a local demo profile or sign in on this device.</p>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-mode="login" data-i18n="login">Login</button>
+        <button class="auth-tab" data-mode="register" data-i18n="register">Register</button>
+      </div>
+      <form id="authForm" class="stack-form">
+        <label id="nameField" hidden>
+          <span data-i18n="fullName">Full name</span>
+          <input id="authName" autocomplete="name" placeholder="Your name">
+        </label>
+        <label>
+          <span data-i18n="mobileNumber">Mobile number</span>
+          <input id="authMobile" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+        </label>
+        <label>
+          <span data-i18n="password">Password</span>
+          <input id="authPassword" type="password" minlength="4" autocomplete="current-password" placeholder="At least 4 characters" required>
+        </label>
+        <button class="primary-button full" type="submit" id="authSubmit" data-i18n="login">Login</button>
+        <button class="text-button" type="button" id="logoutButton" hidden data-i18n="logout">Log out</button>
+      </form>
+      <p class="footnote warning-note" data-i18n="authWarning">Demo only: profile details are stored in this browser. Do not use a real password or sensitive personal information. This is not secure production authentication.</p>
+      <p class="form-message" id="authMessage" aria-live="polite"></p>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
