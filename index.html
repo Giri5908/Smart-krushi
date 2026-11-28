@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#14452f" />
+  <title>రైతు మిత్ర · RythuMitra | Smart Farming Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@500;600;700;800&family=Noto+Serif+Telugu:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <!-- Top Navigation Bar (Desktop & Tablet) -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-left">
+          <button class="mobile-menu" id="menuButton" aria-label="Open navigation">☰</button>
+          <a class="brand" href="#overview" aria-label="రైతు మిత్ర RythuMitra home">
+            <span class="brand-mark">🌱</span>
+            <span>
+              <strong class="brand-telugu">రైతు మిత్ర</strong>
+              <small>RYTHUMITRA · YOUR FARMING FRIEND</small>
+            </span>
+          </a>
+        </div>
+
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a class="nav-link active" href="#overview"><span data-i18n="overview">Overview</span></a>
+          <a class="nav-link" href="#weather"><span data-i18n="weather">Weather</span></a>
+          <a class="nav-link" href="#market-prices"><span data-i18n="marketPrices">Market prices</span></a>
+          <a class="nav-link" href="#drone-features"><span data-i18n="droneFeatures">AI Drone</span></a>
+          <a class="nav-link" href="#farm-machinery"><span data-i18n="farmMachinery">Farm machinery</span></a>
+          <a class="nav-link" href="#soil"><span data-i18n="soil">Soil health</span></a>
+          <a class="nav-link" href="#profit"><span data-i18n="profit">Profit calculator</span></a>
+          <a class="nav-link" href="#season-planner"><span data-i18n="aiPlannerNav">AI Season Planner</span></a>
+          <a class="nav-link" href="#pests"><span data-i18n="pests">Pest guide</span></a>
+          <a class="nav-link" href="#schemes"><span data-i18n="schemes">Govt. schemes</span></a>
+        </nav>
+
+        <div class="top-actions">
+          <div class="date-chip"><span>◷</span><span id="todayDate"></span></div>
+          <label class="language-picker">
+            <span>文</span>
+            <select id="languageSelect" aria-label="Select language">
+              <option value="en">English</option>
+              <option value="te">తెలుగు</option>
+              <option value="hi">हिन्दी</option>
+            </select>
+          </label>
+          <button class="account-pill" id="accountTop" aria-label="Account">
+            <span class="avatar" id="avatar">F</span>
+            <span class="account-pill-text">
+              <strong id="accountName">Farmer account</strong>
+              <small id="accountStatus">Sign in to save your profile</small>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slide-out Navigation Drawer (Mobile) -->
+    <aside class="sidebar" id="sidebar" aria-label="Mobile navigation">
+      <div class="sidebar-header">
+        <a class="brand" href="#overview">
+          <span class="brand-mark">🌱</span>
+          <span><strong class="brand-telugu">రైతు మిత్ర</strong><small>RYTHUMITRA · YOUR FARMING FRIEND</small></span>
+        </a>
+        <button class="sidebar-close" id="closeSidebar" aria-label="Close navigation">×</button>
+      </div>
+      <div class="side-label" data-i18n="workspace">WORKSPACE</div>
+      <nav class="nav-list">
+        <a class="nav-link active" href="#overview"><span>▦</span><span data-i18n="overview">Overview</span></a>
+        <a class="nav-link" href="#weather"><span>☀</span><span data-i18n="weather">Weather</span></a>
+        <a class="nav-link" href="#market-prices"><span>₹</span><span data-i18n="marketPrices">Market prices</span></a>
+        <a class="nav-link" href="#drone-features"><span>✦</span><span data-i18n="droneFeatures">AI Drone</span></a>
+        <a class="nav-link" href="#farm-machinery"><span>⚙</span><span data-i18n="farmMachinery">Farm machinery</span></a>
+        <a class="nav-link" href="#soil"><span>◉</span><span data-i18n="soil">Soil health</span></a>
+        <a class="nav-link" href="#season-planner"><span>✦</span><span data-i18n="aiPlannerNav">AI Season Planner</span></a>
+        <a class="nav-link" href="#profit"><span>₹</span><span data-i18n="profit">Profit calculator</span></a>
+        <a class="nav-link" href="#pests"><span>⌁</span><span data-i18n="pests">Pest guide</span></a>
+        <a class="nav-link" href="#schemes"><span>♙</span><span data-i18n="schemes">Govt. schemes</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <span class="help-icon">🌱</span>
+          <strong data-i18n="grow">Grow with confidence</strong>
+          <p data-i18n="growText">Small steps today can build a healthier harvest tomorrow.</p>
+        </div>
+        <button class="profile-button" id="accountButton">
+          <span class="avatar-badge">♙</span>
+          <span class="profile-copy">
+            <strong data-i18n="farmerAccount">FARMER ACCOUNT</strong>
+            <small data-i18n="login">Login</small>
+          </span>
+          <span>›</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Showcase Hero Template -->
+      <section class="hero-showcase" id="overview">
+        <div class="hero-copy">
+          <div class="hero-badges">
+            <span class="hero-tag" data-i18n="farmWorkspace">YOUR FARM WORKSPACE</span>
+            <span class="hero-pill" data-i18n="seasonReady">A BETTER WAY TO FARM</span>
+          </div>
+          <h1>
+            <span data-i18n="goodDay">Good day, farmer</span> <span class="wave">✦</span>
+          </h1>
+          <h2 class="hero-headline" data-i18n="heroTitle">Plan well. Grow more.<br>Harvest with confidence.</h2>
+          <p class="hero-desc" data-i18n="heroText">Bring weather, crop planning and farm calculations together in one place.</p>
+          <p class="hero-subdesc" data-i18n="welcomeText">Make informed decisions with simple tools for your farm.</p>
+
+          <div class="hero-actions">
+            <a class="hero-cta" href="#tools">
+              <span data-i18n="exploreTools">Explore farm tools</span> <b>↗</b>
+            </a>
+            <a class="hero-secondary-cta" href="#weather">
+              <span data-i18n="weatherForecast">Weather forecast</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-image-frame">
+            <img src="assets/smart-farming-hero.png" alt="RythuMitra smart farming banner with a farmer, crop fields, drone, and farm tools">
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Access Bar -->
+      <section class="tools-section" id="tools">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="quickAccess">QUICK ACCESS</p>
+            <h2 data-i18n="farmTools">Your farm tools</h2>
+          </div>
+          <span class="section-note" data-i18n="toolsNote">Practical tools, all in one place</span>
+        </div>
+        <div class="tool-grid">
+          <a class="tool-card" href="#weather">
+            <span class="tool-icon mint">☀</span>
+            <span><strong data-i18n="weatherForecast">Weather forecast</strong><small data-i18n="weatherCardText">Check local conditions</small></span>
+            <b>↗</b>
+          </a>
+          <a class="tool-card" href="#soil">
+            <span class="tool-icon sky">◉</span>
+            <span><strong data-i18n="soilCalculator">Soil health check</strong><small data-i18n="soilCardText">Review soil readings</small></span>
+            <b>↗</b>
+          </a>
+          <a class="tool-card" href="#profit">
+            <span class="tool-icon peach">₹</span>
+            <span><strong data-i18n="profitEstimator">Profit estimator</strong><small data-i18n="profitCardText">Estimate your farm returns</small></span>
+            <b>↗</b>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 1: Weather Dashboard -->
+      <div class="dashboard-split-grid">
+      <section class="panel weather-panel weather-standalone" id="weather">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="localConditions">LOCAL CONDITIONS</p>
+            <h2 data-i18n="weatherDashboard">Weather dashboard</h2>
+          </div>
+          <span class="live-label"><i></i><span data-i18n="liveData">LIVE DATA</span></span>
+        </div>
+        <form id="weatherForm" class="inline-form">
+          <label class="sr-only" for="weatherCity">City or village</label>
+          <input id="weatherCity" placeholder="Enter village or city (e.g. Visakhapatnam)" value="Visakhapatnam" required>
+          <button class="primary-button" type="submit" data-i18n="getWeather">Get weather</button>
+        </form>
+        <div class="weather-display">
+          <div>
+            <div class="weather-temp" id="weatherTemp">--°</div>
+            <div class="weather-condition" id="weatherCondition">Search for a location</div>
+            <div class="weather-place" id="weatherPlace">Weather provided by Open-Meteo</div>
+          </div>
+          <div class="weather-symbol" id="weatherSymbol">☀</div>
+        </div>
+        <div class="weather-metrics">
+          <div><span>💧 <span data-i18n="humidity">Humidity</span></span><strong id="humidityValue">--</strong></div>
+          <div><span>💨 <span data-i18n="wind">Wind</span></span><strong id="windValue">--</strong></div>
+          <div><span>🌧 <span data-i18n="rain">Rain</span></span><strong id="rainValue">--</strong></div>
+        </div>
+        <p class="footnote" id="weatherNote" data-i18n="weatherNote">Forecasts are guidance only. Check local advisories before farm operations.</p>
+      </section>
+
+      <section class="panel market-panel" id="market-prices">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">AGMARKNET · రైతు మార్కెట్ సమాచారం</p>
+            <h2 data-i18n="marketPrices">Current market prices</h2>
+          </div>
+          <span class="panel-emoji">₹</span>
+        </div>
+        <p class="muted small">Compare reported mandi wholesale prices by state and crop. Prices are daily reports in rupees per quintal, so check the report date before making a sale decision.</p>
+        <form id="marketPriceForm" class="market-filters">
+          <label>
+            <span>State / రాష్ట్రం</span>
+            <select id="marketState">
+              <option>Andhra Pradesh</option><option>Telangana</option><option>Karnataka</option><option>Tamil Nadu</option>
+              <option>Maharashtra</option><option>Kerala</option><option>Gujarat</option><option>Rajasthan</option>
+              <option>Madhya Pradesh</option><option>Uttar Pradesh</option><option>Punjab</option><option>Haryana</option>
+              <option>West Bengal</option><option>Bihar</option><option>Odisha</option><option>Chhattisgarh</option>
+              <option>Jharkhand</option><option>Assam</option><option>Himachal Pradesh</option><option>Uttarakhand</option>
+              <option>Jammu and Kashmir</option><option>Goa</option>
+            </select>
+          </label>
+          <label>
+            <span>Commodity / పంట</span>
+            <select id="marketCommodity">
+              <option value="Paddy(Dhan)(Common)">Paddy (Common)</option><option>Rice</option><option>Maize</option>
+              <option>Wheat</option><option>Cotton</option><option>Groundnut</option><option>Onion</option>
+              <option>Tomato</option><option>Potato</option><option>Chilli</option><option>Soyabean</option>
+              <option>Turmeric</option><option>Green Gram</option><option>Black Gram</option>
+            </select>
+          </label>
+          <button class="primary-button" type="submit" id="marketSearchButton">Get prices / ధరలు చూడండి</button>
+        </form>
+        <div class="market-status" id="marketPriceStatus" aria-live="polite">Loading latest available market reports…</div>
+        <div class="market-table-wrap">
+          <table class="market-table">
+            <thead><tr><th>Market / మార్కెట్</th><th>District / జిల్లా</th><th>Variety / రకం</th><th>Min / కనిష్ఠం</th><th>Modal / మధ్యస్థం</th><th>Max / గరిష్ఠం</th><th>Date / తేదీ</th></tr></thead>
+            <tbody id="marketPriceRows"><tr><td colspan="7">Choose a state and commodity to load prices.</td></tr></tbody>
+          </table>
+        </div>
+        <p class="footnote">Source: <a href="https://data.gov.in/resource/current-daily-price-various-commodities-various-markets-mandi" target="_blank" rel="noopener">Government of India Open Data (AGMARKNET)</a>, accessed through a public API mirror. Prices are mandi-reported daily wholesale rates, not guaranteed farm-gate offers.</p>
+      </section>
+      </div>
+
+      <section class="panel drone-panel" id="drone-features">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="droneEyebrow">SMART FIELD OPERATIONS</p>
+            <h2 data-i18n="droneFeatures">AI Agriculture Drone Features</h2>
+          </div>
+          <span class="panel-emoji">✦</span>
+        </div>
+        <p class="muted small" data-i18n="droneIntro">Explore ways aerial imagery and AI can help farmers inspect fields and plan targeted action.</p>
+        <div class="drone-feature-grid">
+          <article class="drone-feature-card" data-drone="health" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-health.jpg" alt="Demo illustration of drone crop health mapping over green rows" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">◉</span>
+            <h3 data-i18n="droneHealthTitle">Crop health mapping</h3>
+            <p data-i18n="droneHealthText">Highlight unusual crop patterns from aerial images to guide closer field scouting.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneHealthStage">Crop monitoring</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="drone-feature-card" data-drone="count" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-count.jpg" alt="Demo illustration of aerial plant count and row gap checks" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">▦</span>
+            <h3 data-i18n="droneCountTitle">Plant count and gap checks</h3>
+            <p data-i18n="droneCountText">Review crop stand density and locate areas that may need replanting or inspection.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneCountStage">Stand check</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="drone-feature-card" data-drone="hotspot" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-hotspot.jpg" alt="Demo illustration of drone stress hotspot scouting in a field" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">⌖</span>
+            <h3 data-i18n="droneHotspotTitle">Stress hotspot scouting</h3>
+            <p data-i18n="droneHotspotText">Mark patches of possible pest, disease, weed, or nutrient stress for expert review.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneHotspotStage">Stress scouting</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="drone-feature-card" data-drone="water" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-irrigation.jpg" alt="Demo illustration of aerial irrigation and soil moisture checks" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">≈</span>
+            <h3 data-i18n="droneWaterTitle">Irrigation checks</h3>
+            <p data-i18n="droneWaterText">Use field patterns to prioritize areas for on-ground moisture and irrigation checks.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneWaterStage">Moisture check</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="drone-feature-card" data-drone="spray" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-spray.jpg" alt="Demo illustration of precision agricultural spraying drone" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">✣</span>
+            <h3 data-i18n="droneSprayTitle">Precision treatment planning</h3>
+            <p data-i18n="droneSprayText">Identify candidate treatment zones for review; verify product labels and local rules before spraying.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneSprayStage">Treatment zone</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="drone-feature-card" data-drone="map" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/drone-map.jpg" alt="Demo illustration of aerial field mapping across farm plots" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="drone-feature-icon">▤</span>
+            <h3 data-i18n="droneMapTitle">Field mapping and progress</h3>
+            <p data-i18n="droneMapText">Create visual field records to compare crop development across scouting visits.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="droneMapStage">Field record</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+        </div>
+        <div class="drone-notice" role="note" data-i18n="droneNotice">Demo preview: this dashboard does not connect to a drone, process aerial imagery, or control flight and spraying. Connect a compatible drone and validated analysis service to enable live features.</div>
+        <a class="drone-guide-link" href="#pests" data-i18n="droneGuideLink">Open the plant photo guide</a>
+      </section>
+
+      <section class="panel machinery-panel" id="farm-machinery">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="machineryEyebrow">TOOLS FOR EVERY FARMING STAGE</p>
+            <h2 data-i18n="farmMachinery">Farm Machinery Guide</h2>
+          </div>
+          <span class="panel-emoji">⚙</span>
+        </div>
+        <p class="muted small" data-i18n="machineryIntro">Explore common machines by the farm job they help with.</p>
+        <div class="machinery-grid">
+          <article class="machinery-card" data-machinery="tractor" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-tractor.jpg" alt="Demo illustration of a tractor and power tiller preparing soil" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">▰</span>
+            <h3 data-i18n="tractorTitle">Tractors and power tillers</h3>
+            <p data-i18n="tractorText">Prepare land, pull compatible implements, and transport farm materials. Choose power and size for your acreage and terrain.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="landPrep">Land preparation</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="machinery-card" data-machinery="planter" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-planter.jpg" alt="Demo illustration of a seed drill and planter sowing in rows" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">⇣</span>
+            <h3 data-i18n="planterTitle">Seed drills and planters</h3>
+            <p data-i18n="planterText">Place seeds in rows at a more even spacing and depth. Match the machine to crop, seed size, and row spacing.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="sowingStage">Sowing</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="machinery-card" data-machinery="transplanter" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-transplanter.jpg" alt="Demo illustration of a rice transplanter in a paddy field" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">♧</span>
+            <h3 data-i18n="transplanterTitle">Rice transplanters</h3>
+            <p data-i18n="transplanterText">Help transplant nursery-raised rice seedlings in rows. Field leveling, seedling mat preparation, and operator training matter.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="transplantStage">Transplanting</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="machinery-card" data-machinery="sprayer" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-sprayer.jpg" alt="Demo illustration of agricultural crop sprayers misting green crops" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">⌁</span>
+            <h3 data-i18n="sprayerTitle">Crop sprayers</h3>
+            <p data-i18n="sprayerText">Apply approved crop inputs with suitable nozzles and calibration. Wear protective equipment and follow the product label.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="cropCareStage">Crop care</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="machinery-card" data-machinery="irrigation" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-irrigation.jpg" alt="Demo illustration of farm water pump, drip lines, and sprinklers" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">≈</span>
+            <h3 data-i18n="irrigationTitle">Pumps and irrigation systems</h3>
+            <p data-i18n="irrigationText">Move water to fields using pumps, pipes, sprinklers, or drip lines selected for the water source and crop.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="irrigationStage">Irrigation</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+          <article class="machinery-card" data-machinery="harvester" role="button" tabindex="0">
+            <div class="machinery-thumb">
+              <img src="assets/machinery-harvester.jpg" alt="Demo illustration of a combine harvester and grain thresher" loading="lazy">
+              <span class="machinery-demo-tag" data-i18n="demoTag">DEMO</span>
+            </div>
+            <span class="machinery-icon">▤</span>
+            <h3 data-i18n="harvestTitle">Harvesters and threshers</h3>
+            <p data-i18n="harvestText">Harvest or separate grain from crop residue. Check crop compatibility, field access, moisture, and service availability.</p>
+            <div class="machinery-card-footer">
+              <span class="machinery-stage" data-i18n="harvestStage">Harvest and post-harvest</span>
+              <span class="machinery-view-cue" data-i18n="viewDemo">View demo ↗</span>
+            </div>
+          </article>
+        </div>
+        <div class="machinery-notice" role="note" data-i18n="machineryNotice">Before hiring or buying, compare total cost, field size, crop suitability, fuel or power needs, safety features, spare parts, and local servicing. Check current assistance with your state agriculture department.</div>
+      </section>
+
+      <!-- Section 2: Soil Health & Profit Calculator -->
+      <section class="content-grid">
+        <div class="panel" id="soil">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="soilInsights">SOIL INSIGHTS · SHC GUIDE</p>
+              <h2 data-i18n="soilHealthCalculator">Soil health calculator</h2>
+            </div>
+            <span class="panel-emoji">🪴</span>
+          </div>
+          <p class="muted small" data-i18n="soilIntro">Enter values from your Soil Health Card report to check parameter status and indicative fertilizer guidance.</p>
+          <form id="soilForm" class="form-grid">
+            <label>
+              <span data-i18n="selectCrop">Crop</span>
+              <select id="soilCrop">
+                <option value="rice">Rice (Paddy)</option>
+                <option value="wheat">Wheat</option>
+                <option value="maize">Maize</option>
+                <option value="cotton">Cotton</option>
+                <option value="groundnut">Groundnut</option>
+                <option value="vegetables">Vegetables / Chilli</option>
+                <option value="pulses">Pulses</option>
+              </select>
+            </label>
+            <label><span data-i18n="landArea">Land area (acres)</span><input type="number" id="soilArea" min="0.1" step="0.1" value="1" required></label>
+            <label><span>pH (0–14)</span><input type="number" id="soilPh" min="0" max="14" step="0.1" value="6.8" required></label>
+            <label><span data-i18n="soilEcLabel">EC (dS/m)</span><input type="number" id="soilEc" min="0" step="0.01" value="0.45" required></label>
+            <label><span data-i18n="soilOcLabel">Organic Carbon (%)</span><input type="number" id="soilOc" min="0" max="10" step="0.01" value="0.55" required></label>
+            <label><span>Nitrogen (kg/ha)</span><input type="number" id="soilN" min="0" step="1" value="280" required></label>
+            <label><span>Phosphorus (kg/ha)</span><input type="number" id="soilP" min="0" step="1" value="22" required></label>
+            <label><span>Potassium (kg/ha)</span><input type="number" id="soilK" min="0" step="1" value="180" required></label>
+            <details class="soil-micro-details span-two">
+              <summary data-i18n="soilMicroToggle">Optional: Secondary & Micro-nutrients (S, Zn, Fe, Cu, Mn, B)</summary>
+              <div class="form-grid compact-grid soil-micro-grid">
+                <label><span>Sulphur (S, ppm)</span><input type="number" id="soilS" min="0" step="0.1" value="14"></label>
+                <label><span>Zinc (Zn, ppm)</span><input type="number" id="soilZn" min="0" step="0.01" value="0.80"></label>
+                <label><span>Iron (Fe, ppm)</span><input type="number" id="soilFe" min="0" step="0.1" value="6.5"></label>
+                <label><span>Copper (Cu, ppm)</span><input type="number" id="soilCu" min="0" step="0.01" value="0.50"></label>
+                <label><span>Manganese (Mn, ppm)</span><input type="number" id="soilMn" min="0" step="0.1" value="3.5"></label>
+                <label><span>Boron (B, ppm)</span><input type="number" id="soilB" min="0" step="0.01" value="0.60"></label>
+              </div>
+            </details>
+            <button class="primary-button full span-two" type="submit" data-i18n="analyzeSoil">Calculate soil health & fertilizer</button>
+          </form>
+          <div id="soilResult" class="result-box soil-result-box" aria-live="polite">
+            <span class="result-icon">◉</span>
+            <span data-i18n="soilHint">Your soil summary will appear here.</span>
+          </div>
+          <div class="soil-portal-bar">
+            <span class="muted small" data-i18n="soilPortalNote">Need an official Soil Health Card or STCR calculation?</span>
+            <a class="soil-portal-link" href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener" data-i18n="openShcPortal">Official Soil Health Portal ↗</a>
+          </div>
+          <p class="footnote" data-i18n="soilDisclaimer">Indicative educational ranges modeled on Soil Health Card parameters. Nutrient categories vary by soil, crop, and lab method—follow your official Soil Health Card or KVK recommendation.</p>
+        </div>
+
+        <div class="panel" id="profit">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="farmEconomicsLabel">FARM ECONOMICS</p>
+              <h2 data-i18n="profitCalculator">Profit calculator</h2>
+            </div>
+            <span class="panel-emoji">📈</span>
+          </div>
+          <p class="muted small" data-i18n="profitIntro">Estimate a crop's income after your listed expenses.</p>
+          <form id="profitForm" class="stack-form">
+            <label><span data-i18n="landArea">Land area (acres)</span><input id="farmArea" type="number" min="0.01" step="0.01" value="2" required></label>
+            <div class="form-grid compact-grid">
+              <label><span data-i18n="yieldPerAcre">Yield per acre (kg)</span><input id="farmYield" type="number" min="0" step="1" value="2200" required></label>
+              <label><span data-i18n="pricePerKg">Selling price (₹/kg)</span><input id="farmPrice" type="number" min="0" step="0.01" value="25" required></label>
+            </div>
+            <label><span data-i18n="totalCosts">Total costs (₹)</span><input id="farmCosts" type="number" min="0" step="1" value="25000" required></label>
+            <button class="primary-button full" type="submit" data-i18n="calculateProfit">Calculate estimate</button>
+          </form>
+          <div class="profit-result">
+            <div><span data-i18n="estimatedRevenue">Estimated revenue</span><strong id="revenueValue">₹1,10,000</strong></div>
+            <div><span data-i18n="estimatedProfit">Estimated net result</span><strong id="profitValue">₹85,000</strong></div>
+          </div>
+          <p class="footnote" data-i18n="profitDisclaimer">An estimate, not a price guarantee. Excludes costs you have not entered and market fluctuations.</p>
+        </div>
+      </section>
+
+      <!-- Section 3: AI Farming Season Planner & Pest Guide -->
+      <section class="content-grid planner-row">
+        <div class="panel ai-planner-panel" id="season-planner">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="seasonPlanner">AI SEASON PLANNER</p>
+              <h2 data-i18n="aiSeasonPlanner">AI Farming Season Planner</h2>
+            </div>
+            <span class="panel-emoji">🤖</span>
+          </div>
+          <p class="muted small" data-i18n="aiPlannerIntro">AI guide on what to do in farming across the full crop cycle, plus daily advice in Telugu.</p>
+
+          <form id="aiPlannerForm" class="ai-planner-controls">
+            <label>
+              <span data-i18n="season">Season</span>
+              <select id="aiSeason">
+                <option value="kharif">Kharif (Monsoon)</option>
+                <option value="rabi">Rabi (Winter)</option>
+                <option value="zaid">Zaid (Mar–Jun)</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="selectCrop">Crop</span>
+              <select id="aiCrop">
+                <option value="rice">Rice (Paddy) / వరి</option>
+                <option value="cotton">Cotton / పత్తి</option>
+                <option value="groundnut">Groundnut / వేరుశనగ</option>
+                <option value="maize">Maize / మొక్కజొన్న</option>
+                <option value="wheat">Wheat / గోధుమ</option>
+                <option value="chickpea">Chickpea / శనగ</option>
+                <option value="greengram">Green Gram / పెసలు</option>
+                <option value="watermelon">Watermelon / పుచ్చకాయ</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="soilType">Soil type</span>
+              <select id="aiSoilType">
+                <option value="alluvial">Alluvial / ఒండ్రు నేల</option>
+                <option value="black">Black / నల్ల నేల</option>
+                <option value="red">Red / ఎర్ర నేల</option>
+                <option value="sandy">Sandy / ఇసుక నేల</option>
+                <option value="clay">Clay / బంకమట్టి నేల</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="waterAvailability">Water availability</span>
+              <select id="aiWaterAvailability">
+                <option value="high">Good / assured · సమృద్ధిగా / హామీతో</option>
+                <option value="medium">Moderate · మధ్యస్థం</option>
+                <option value="low">Limited · పరిమితం</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit" data-i18n="generatePlan">Get AI Plan</button>
+          </form>
+
+          <p class="ai-plan-context" id="aiPlanContext" aria-live="polite"></p>
+          <div class="ai-plan-grid" id="aiPlanGrid" aria-live="polite"></div>
+
+          <div class="telugu-advice-box" id="teluguDailyAdvice">
+            <div class="telugu-advice-head">
+              <strong>🌾 నేటి రోజువారీ వ్యవసాయ సలహా (తెలుగు)</strong>
+              <button type="button" class="subtle-text-btn" id="nextTeluguTip">మరో సలహా ↻</button>
+            </div>
+            <p id="dailyTeluguTip">ఉదయం లేదా సాయంత్రం చల్లని వేళల్లో మాత్రమే నీరు పెట్టండి; మధ్యాహ్నం ఎండలో నీరు పెడితే ఆవిరై వృథా అవుతుంది.</p>
+          </div>
+
+          <p class="footnote" data-i18n="aiPlannerDisclaimer">AI guidance provides general seasonal schedules. Adjust sowing, fertilizer and irrigation with your local KVK or agriculture officer.</p>
+        </div>
+
+        <div class="panel" id="pests">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" data-i18n="plantProtection">PLANT PROTECTION</p>
+              <h2 data-i18n="pestGuide">Pest & symptom guide</h2>
+            </div>
+            <span class="panel-emoji">🐛</span>
+          </div>
+          <p class="muted small">Take a clear photo of the affected leaf, or choose an image from your gallery. Analysis starts automatically.</p>
+          <div class="plant-image-actions">
+            <label class="plant-image-button" for="plantCameraInput">Take photo</label>
+            <label class="plant-image-button secondary" for="plantGalleryInput">Upload from gallery</label>
+            <input id="plantCameraInput" class="visually-hidden" type="file" accept="image/*" capture="environment" aria-label="Take a photo of the affected plant">
+            <input id="plantGalleryInput" class="visually-hidden" type="file" accept="image/*" aria-label="Upload a plant photo from your gallery">
+          </div>
+          <div class="plant-image-preview" id="plantImagePreview" hidden>
+            <img id="plantImage" alt="Selected affected plant leaf">
+            <button class="text-button" id="removePlantImage" type="button">Remove photo</button>
+          </div>
+          <div class="result-box pest-result" id="pestResult" aria-live="polite">
+            <span class="result-icon">⌁</span>
+            <span>Choose a photo to see the analysis here.</span>
+          </div>
+          <p class="footnote">Photo-based results are estimates, not confirmed diagnoses. Verify with a local KVK or agriculture officer before applying treatments.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: Featured Government Schemes Band -->
+      <section class="panel schemes-panel" id="schemes">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow" data-i18n="supportForFarmers">SUPPORT FOR FARMERS</p>
+            <h2 data-i18n="governmentSchemes">Government schemes & resources</h2>
+          </div>
+          <span class="panel-emoji">🏛</span>
+        </div>
+        <div class="scheme-grid">
+          <article class="scheme-card">
+            <span class="scheme-symbol">₹</span>
+            <div>
+              <strong>PM-KISAN</strong>
+              <p data-i18n="schemeKisan">Official information and beneficiary services for eligible farmer families.</p>
+              <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">☂</span>
+            <div>
+              <strong>PM Fasal Bima Yojana</strong>
+              <p data-i18n="schemeInsurance">Crop insurance information, notifications and farmer services.</p>
+              <a href="https://pmfby.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">◉</span>
+            <div>
+              <strong>Soil Health Card</strong>
+              <p data-i18n="schemeSoil">Learn about soil testing and soil health card services.</p>
+              <a href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">☀</span>
+            <div>
+              <strong>PM-KUSUM</strong>
+              <p>Information on solar pumps and solarisation support for agricultural power needs.</p>
+              <a href="https://pmkusum.mnre.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">⇄</span>
+            <div>
+              <strong>e-NAM</strong>
+              <p>Explore the electronic national market platform for agricultural commodities and participating mandis.</p>
+              <a href="https://enam.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">▤</span>
+            <div>
+              <strong>Agriculture Infrastructure Fund</strong>
+              <p>Financing information for eligible post-harvest infrastructure and community farming asset projects.</p>
+              <a href="https://agriinfra.dac.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+          <article class="scheme-card">
+            <span class="scheme-symbol">♧</span>
+            <div>
+              <strong>National Mission on Natural Farming</strong>
+              <p>Learn about government support and training resources for natural farming practices.</p>
+              <a href="https://naturalfarming.dac.gov.in/" target="_blank" rel="noopener">Official website ↗</a>
+            </div>
+          </article>
+        </div>
+        <p class="footnote" data-i18n="schemeDisclaimer">Eligibility, benefits and application windows can change. Verify details on the official portal or with your agriculture department.</p>
+      </section>
+
+      <footer class="footer">
+        <a class="brand footer-brand" href="#overview">
+          <span class="brand-mark">🌱</span>
+          <span><strong class="brand-telugu">రైతు మిత్ర</strong><small>RYTHUMITRA · YOUR FARMING FRIEND</small></span>
+        </a>
+        <span data-i18n="footerText">Built to make farm information easier to explore.</span>
+        <a class="back-top-btn" href="#overview" data-i18n="backTop">Back to top ↑</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal-backdrop" id="authModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-brand">🌱</div>
+      <p class="eyebrow" data-i18n="farmerAccount">FARMER ACCOUNT</p>
+      <h2 id="authTitle" data-i18n="welcomeBack">Welcome back</h2>
+      <p class="muted small" data-i18n="authIntro">Create a local demo profile or sign in on this device.</p>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-mode="login" data-i18n="login">Login</button>
+        <button class="auth-tab" data-mode="register" data-i18n="register">Register</button>
+      </div>
+      <form id="authForm" class="stack-form">
+        <label id="nameField" hidden>
+          <span data-i18n="fullName">Full name</span>
+          <input id="authName" autocomplete="name" placeholder="Your name">
+        </label>
+        <label>
+          <span data-i18n="mobileNumber">Mobile number</span>
+          <input id="authMobile" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+        </label>
+        <label>
+          <span data-i18n="password">Password</span>
+          <input id="authPassword" type="password" minlength="4" autocomplete="current-password" placeholder="At least 4 characters" required>
+        </label>
+        <button class="primary-button full" type="submit" id="authSubmit" data-i18n="login">Login</button>
+        <button class="text-button" type="button" id="logoutButton" hidden data-i18n="logout">Log out</button>
+      </form>
+      <p class="footnote warning-note" data-i18n="authWarning">Demo only: profile details are stored in this browser. Do not use a real password or sensitive personal information. This is not secure production authentication.</p>
+      <p class="form-message" id="authMessage" aria-live="polite"></p>
+    </div>
+  </div>
+  <!-- Machinery Demo Preview Modal -->
+  <div class="modal-backdrop" id="machineryModal" hidden>
+    <div class="modal machinery-modal" role="dialog" aria-modal="true" aria-labelledby="machineryModalTitle">
+      <button class="modal-close" id="closeMachineryModal" aria-label="Close">×</button>
+      <div class="machinery-modal-media">
+        <img id="machineryModalImg" alt="">
+        <span class="machinery-demo-tag" data-i18n="demoPreviewBadge">DEMO ILLUSTRATION</span>
+      </div>
+      <div class="machinery-modal-body">
+        <p class="eyebrow" id="machineryModalStage"></p>
+        <h2 id="machineryModalTitle"></h2>
+        <p class="muted small" id="machineryModalDesc"></p>
+        <ul class="machinery-modal-tips" id="machineryModalTips"></ul>
+        <p class="footnote warning-note" id="machineryModalDisclaimer" data-i18n="machineryDemoDisclaimer">Demo purpose only: this illustrative preview shows typical machinery usage. Compare local models, rental rates, and KVK guidance before hiring or buying.</p>
+        <div class="machinery-modal-nav">
+          <button class="plant-image-button secondary" type="button" id="machineryPrevBtn" data-i18n="prevMachine">← Previous</button>
+          <button class="plant-image-button" type="button" id="machineryNextBtn" data-i18n="nextMachine">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
